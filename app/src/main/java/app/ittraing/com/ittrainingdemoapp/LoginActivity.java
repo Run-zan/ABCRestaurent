@@ -12,12 +12,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 
 import app.ittraing.com.ittrainingdemoapp.Helper.Constants;
+import app.ittraing.com.ittrainingdemoapp.Helper.GlobalState;
+import app.ittraing.com.ittrainingdemoapp.POJO.LoginCredentials;
 import app.ittraing.com.ittrainingdemoapp.Parser.JsonParser;
 
 /**
@@ -98,14 +102,22 @@ public class LoginActivity extends AppCompatActivity {
 
             jsonObject = jsonParser.performPostCI(url, hashMap);
 
+            progressDialog.dismiss();
+
             if (jsonObject == null) {
                 status = 1;
 
             } else {
                 try {
                     if (jsonObject.getString("status").equals("success")) {
-
                         status = 2;
+
+                        LoginCredentials credentials= new LoginCredentials(email, password);
+
+                        GlobalState state = GlobalState.singleton;
+                        state.setPrefsIsLoggedIn(Constants.STATE_TRUE, 1);
+                        state.setPrefsloggedUserInfo(new Gson().toJson(credentials), 1);
+
                     } else {
                         status = 3;
                     }
@@ -120,8 +132,6 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-
-            progressDialog.dismiss();
 
             if (status == 1) {
                 Toast.makeText(LoginActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();

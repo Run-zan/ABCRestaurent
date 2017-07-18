@@ -8,4 +8,8 @@ public class Constants {
 
     public static final String BASE_URL = "http://kinbech.6te.net/ResturantFoods/";
 
+    public static final String STATE_TRUE = "true";
+
+    public static final String STATE_FALSE = "false";
+
 }

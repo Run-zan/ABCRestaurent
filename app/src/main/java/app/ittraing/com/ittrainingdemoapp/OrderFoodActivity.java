@@ -14,8 +14,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +27,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 import app.ittraing.com.ittrainingdemoapp.Helper.Constants;
+import app.ittraing.com.ittrainingdemoapp.Helper.GlobalState;
+import app.ittraing.com.ittrainingdemoapp.POJO.LoginCredentials;
 import app.ittraing.com.ittrainingdemoapp.Parser.JsonParser;
 
 /**
@@ -40,6 +45,8 @@ public class OrderFoodActivity extends AppCompatActivity {
 
     EditText mQuantity, mTime, mDate;
 
+    TextView mOrderText;
+
     Button mOrderBtn;
 
     ProgressDialog progressDialog;
@@ -50,12 +57,27 @@ public class OrderFoodActivity extends AppCompatActivity {
 
     Calendar calendar;
 
+    String email = null;
+
+    LoginCredentials credentials;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_food);
 
+        mOrderText = (TextView)findViewById(R.id.activity_order_food_text);
+
         calendar = Calendar.getInstance();
+
+        GlobalState state = GlobalState.singleton;
+
+        credentials = (LoginCredentials) new Gson().fromJson(state.getPREFS_Logged_USER_INFO(),LoginCredentials.class);
+
+        email = credentials.getUserName().toString();
+
+        mOrderText.setText(email);
+
 
         mQuantity = (EditText) findViewById(R.id.activity_order_food_quantity);
         mDate = (EditText)findViewById(R.id.activity_order_food_date);
