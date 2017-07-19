@@ -78,7 +78,6 @@ public class OrderFoodActivity extends AppCompatActivity {
 
         mOrderText.setText(email);
 
-
         mQuantity = (EditText) findViewById(R.id.activity_order_food_quantity);
         mDate = (EditText)findViewById(R.id.activity_order_food_date);
         mTime = (EditText)findViewById(R.id.activity_order_food_time);
