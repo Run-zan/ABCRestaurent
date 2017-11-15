@@ -1,4 +1,4 @@
-package app.ittraing.com.ittrainingdemoapp.Parser;
+package app.ittraing.com.ittrainingdemoapp.parser;
 
 import android.util.Log;
 

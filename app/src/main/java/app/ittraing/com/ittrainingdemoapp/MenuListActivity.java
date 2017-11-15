@@ -17,10 +17,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import app.ittraing.com.ittrainingdemoapp.Adapter.MenuListAdapter;
-import app.ittraing.com.ittrainingdemoapp.Helper.Constants;
-import app.ittraing.com.ittrainingdemoapp.POJO.MenuList;
-import app.ittraing.com.ittrainingdemoapp.Parser.JsonParser;
+import app.ittraing.com.ittrainingdemoapp.adapter.MenuListAdapter;
+import app.ittraing.com.ittrainingdemoapp.helper.Constants;
+import app.ittraing.com.ittrainingdemoapp.pojo.MenuList;
+import app.ittraing.com.ittrainingdemoapp.parser.JsonParser;
 
 /**
  * Created by ranja_000 on 6/29/2017.
@@ -56,6 +56,9 @@ public class MenuListActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+
+
+
             super.onPreExecute();
             progressDialog = new ProgressDialog(MenuListActivity.this);
             progressDialog.setMessage("Loading Menu");
@@ -79,7 +82,6 @@ public class MenuListActivity extends AppCompatActivity {
 
                 try {
                     if(jsonObject.getString("status").equals("success")){
-
                         status = 2;
                         JSONArray jsonArray = jsonObject.getJSONArray("data");
                         for(int i=0; i<jsonArray.length(); i++){
@@ -96,7 +98,6 @@ public class MenuListActivity extends AppCompatActivity {
                             arrayOfMenuList.add(menuList);
                         }
                     }
-
                     else {
                         status = 3;
                     }
@@ -124,7 +125,7 @@ public class MenuListActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         menuList = (MenuList)parent.getItemAtPosition(position);
-                        Intent intent = new Intent(MenuListActivity.this,MenuDetailActivity.class);
+                        Intent intent = new Intent(MenuListActivity.this, MenuDetailActivity.class);
                         intent.putExtra("key", menuList);
                         startActivity(intent);
                     }
@@ -132,4 +133,5 @@ public class MenuListActivity extends AppCompatActivity {
             }
         }
     }
+
 }

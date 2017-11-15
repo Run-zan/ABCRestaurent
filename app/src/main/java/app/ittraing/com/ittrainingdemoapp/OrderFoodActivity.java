@@ -26,10 +26,10 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import app.ittraing.com.ittrainingdemoapp.Helper.Constants;
-import app.ittraing.com.ittrainingdemoapp.Helper.GlobalState;
-import app.ittraing.com.ittrainingdemoapp.POJO.LoginCredentials;
-import app.ittraing.com.ittrainingdemoapp.Parser.JsonParser;
+import app.ittraing.com.ittrainingdemoapp.helper.Constants;
+import app.ittraing.com.ittrainingdemoapp.helper.GlobalState;
+import app.ittraing.com.ittrainingdemoapp.pojo.LoginCredentials;
+import app.ittraing.com.ittrainingdemoapp.parser.JsonParser;
 
 /**
  * Created by ranja_000 on 7/9/2017.
@@ -107,6 +107,7 @@ public class OrderFoodActivity extends AppCompatActivity {
             }
         });
 
+/////////////////////////Date picker//////////////////////////////////
         mDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +124,7 @@ public class OrderFoodActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-
+/////////////////////////Date picker//////////////////////////////////
 
         mTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,7 +156,6 @@ public class OrderFoodActivity extends AppCompatActivity {
             }
         });
     }
-
 
     //class to request Order to server
     class OrderFood extends AsyncTask<String, String, String>{
@@ -197,6 +197,8 @@ public class OrderFoodActivity extends AppCompatActivity {
             try {
                 if(jsonObject.getString("status").equals("success")){
 
+                    progressDialog.dismiss();
+
                     status = 2;
                 }
 
@@ -214,8 +216,6 @@ public class OrderFoodActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-
-            progressDialog.dismiss();
 
             if (status==2){
                 Toast.makeText(OrderFoodActivity.this, "Order Success", Toast.LENGTH_SHORT).show();

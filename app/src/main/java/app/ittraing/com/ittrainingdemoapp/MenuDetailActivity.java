@@ -4,15 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import app.ittraing.com.ittrainingdemoapp.POJO.MenuList;
+import app.ittraing.com.ittrainingdemoapp.pojo.MenuList;
 
 /**
  * Created by ranja_000 on 6/30/2017.
@@ -28,9 +24,9 @@ public class MenuDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_detail);
 
-        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        /*String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 
-        Toast.makeText(this, date+"", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, date+"", Toast.LENGTH_SHORT).show();*/
 
         mMenuImage = (CircularImageView) findViewById(R.id.activity_menu_detail_foodImage);
         mName = (TextView)findViewById(R.id.activity_menu_detail_foodName);

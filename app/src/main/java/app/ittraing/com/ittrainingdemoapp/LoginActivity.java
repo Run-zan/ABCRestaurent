@@ -19,10 +19,10 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-import app.ittraing.com.ittrainingdemoapp.Helper.Constants;
-import app.ittraing.com.ittrainingdemoapp.Helper.GlobalState;
-import app.ittraing.com.ittrainingdemoapp.POJO.LoginCredentials;
-import app.ittraing.com.ittrainingdemoapp.Parser.JsonParser;
+import app.ittraing.com.ittrainingdemoapp.helper.Constants;
+import app.ittraing.com.ittrainingdemoapp.helper.GlobalState;
+import app.ittraing.com.ittrainingdemoapp.pojo.LoginCredentials;
+import app.ittraing.com.ittrainingdemoapp.parser.JsonParser;
 
 /**
  * Created by ranja_000 on 6/15/2017.
@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(mEmail.getText().length()>2&&mPassword.getText().length()>2) {
+                if(mEmail.getText().length()>2 && mPassword.getText().length()>2) {
 
                     new PerformLogin().execute();
                 }

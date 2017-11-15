@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/activity_order_food_text"
-        android:text="Order Food"
+        android:text="@string/order_food"
         android:textColor="@color/colorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

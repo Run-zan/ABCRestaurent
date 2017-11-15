@@ -1,4 +1,4 @@
-package app.ittraing.com.ittrainingdemoapp.Helper;
+package app.ittraing.com.ittrainingdemoapp.helper;
 
 
 import android.app.Application;
@@ -34,7 +34,8 @@ public class GlobalState extends Application {
 
     /**
      * @return MySIngleton instance
-     */
+    */
+
     public GlobalState getInstance() {
         return singleton;
     }

@@ -16,7 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import app.ittraing.com.ittrainingdemoapp.Adapter.ViewPagerAdapter;
+import app.ittraing.com.ittrainingdemoapp.adapter.ViewPagerAdapter;
+import app.ittraing.com.ittrainingdemoapp.helper.GlobalState;
+import app.ittraing.com.ittrainingdemoapp.practice.CarActivity;
+import app.ittraing.com.ittrainingdemoapp.practice.ListDisplayActivity;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -36,8 +39,8 @@ public class MainActivity extends AppCompatActivity
         mcontent_main_viewPager = (ViewPager)findViewById(R.id.content_main_viewPager);
 
         mcontent_main_tablayout.addTab(mcontent_main_tablayout.newTab().setText("Main"));
-        mcontent_main_tablayout.addTab(mcontent_main_tablayout.newTab().setText("Profile"));
-        mcontent_main_tablayout.addTab(mcontent_main_tablayout.newTab().setText("Gallary"));
+        mcontent_main_tablayout.addTab(mcontent_main_tablayout.newTab().setText("Kitchen"));
+        mcontent_main_tablayout.addTab(mcontent_main_tablayout.newTab().setText(""));
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), mcontent_main_tablayout.getTabCount());
         mcontent_main_viewPager.setAdapter(viewPagerAdapter);
@@ -122,7 +125,9 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_map) {
             startActivity(new Intent(MainActivity.this, MapsActivity.class));
+
         } else if (id == R.id.nav_gallery) {
+            startActivity(new Intent(MainActivity.this, CarActivity.class));
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -133,11 +138,22 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(MainActivity.this, OrderFoodActivity.class));
 
         } else if (id == R.id.nav_send) {
+            startActivity(new Intent(MainActivity.this, ListDisplayActivity.class));
 
+        } else if (id == R.id.logout){
+            callLogout();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
+    }
+    private void callLogout(){
+
+        GlobalState globalState = GlobalState.singleton;
+        globalState.setPrefsIsLoggedIn("false", 1);
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        finish();
     }
 }

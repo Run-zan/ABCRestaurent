@@ -1,4 +1,4 @@
-package app.ittraing.com.ittrainingdemoapp.POJO;
+package app.ittraing.com.ittrainingdemoapp.pojo;
 
 import java.io.Serializable;
 

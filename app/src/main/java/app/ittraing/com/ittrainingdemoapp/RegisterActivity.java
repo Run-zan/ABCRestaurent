@@ -16,8 +16,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-import app.ittraing.com.ittrainingdemoapp.Helper.Constants;
-import app.ittraing.com.ittrainingdemoapp.Parser.JsonParser;
+import app.ittraing.com.ittrainingdemoapp.helper.Constants;
+import app.ittraing.com.ittrainingdemoapp.parser.JsonParser;
 
 /**
  * Created by ranja_000 on 6/11/2017.
@@ -30,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     JsonParser jsonParser = new JsonParser();
 
     ProgressDialog progressDialog;
+
     EditText mEmail, mPassword, mName, mAddress, mPhone;
     Button mRegisterBtn;
 
@@ -40,19 +41,24 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mEmail = (EditText)findViewById(R.id.activity_register_email);
-        mName = (EditText)findViewById(R.id.activity_register_name);
-        mAddress = (EditText)findViewById(R.id.activity_register_address);
-        mPassword = (EditText)findViewById(R.id.activity_register_password);
-        mPhone = (EditText)findViewById(R.id.activity_register_phone);
+        mEmail = (EditText) findViewById(R.id.activity_register_email);
+        mName = (EditText) findViewById(R.id.activity_register_name);
+        mAddress = (EditText) findViewById(R.id.activity_register_address);
+        mPassword = (EditText) findViewById(R.id.activity_register_password);
+        mPhone = (EditText) findViewById(R.id.activity_register_phone);
 
-        mRegisterBtn = (Button)findViewById(R.id.activity_register_submit);
+        mRegisterBtn = (Button) findViewById(R.id.activity_register_submit);
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (mEmail.getText().length() < 2 || mName.getText().length() < 2 || mAddress.getText().length() < 2 || mPassword.getText().length() < 2 || mName.getText().length() < 2) {
+                    Toast.makeText(RegisterActivity.this, "Provide proper information", Toast.LENGTH_SHORT).show();
 
-             new PerformRegister().execute();
+                }
+                else {
+                    new PerformRegister().execute();
+                }
             }
         });
     }
@@ -78,39 +84,38 @@ public class RegisterActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-                HashMap<String, String> hashMap = new HashMap<>();
-                hashMap.put("email", email);
-                hashMap.put("password", password);
-                hashMap.put("address", address);
-                hashMap.put("phone", phone);
-                hashMap.put("name", name);
+            HashMap<String, String> hashMap = new HashMap<>();
+            hashMap.put("email", email);
+            hashMap.put("password", password);
+            hashMap.put("address", address);
+            hashMap.put("phone", phone);
+            hashMap.put("name", name);
 
-            if (email.length() < 2 && password.length() < 2 && address.length() < 2 && phone.length() < 2 && name.length() < 2) {
-                Toast.makeText(RegisterActivity.this, "Provide proper information", Toast.LENGTH_SHORT).show();
+            jsonObject = jsonParser.performPostCI(url, hashMap);
+
+            if (jsonObject == null) {
+                status = 1;
             } else {
-
-                jsonObject = jsonParser.performPostCI(url, hashMap);
-
-                if (jsonObject == null) {
-                    status = 1;
-                } else {
-                    try {
-                        if (jsonObject.getString("status").equals("success")) {
-                            status = 2;
-                        }
-                    }catch (JSONException e) {
-                        e.printStackTrace();
+                try {
+                    if (jsonObject.getString("status").equals("success")) {
+                        status = 2;
                     }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
-                return null;
-            }
+            return null;
+        }
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            if(status==2){
+            if(status == 1){
+                Toast.makeText(RegisterActivity.this, Constants.NETWORK_ISSUE, Toast.LENGTH_SHORT).show();
+            }
+
+           else if(status==2){
 
                 Toast.makeText(RegisterActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));

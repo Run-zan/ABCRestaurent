@@ -1,12 +1,12 @@
-package app.ittraing.com.ittrainingdemoapp.Adapter;
+package app.ittraing.com.ittrainingdemoapp.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import app.ittraing.com.ittrainingdemoapp.Fragments.GallaryFragment;
-import app.ittraing.com.ittrainingdemoapp.Fragments.MainFragment;
-import app.ittraing.com.ittrainingdemoapp.Fragments.ProfileFragment;
+import app.ittraing.com.ittrainingdemoapp.fragments.GallaryFragment;
+import app.ittraing.com.ittrainingdemoapp.fragments.MainFragment;
+import app.ittraing.com.ittrainingdemoapp.fragments.ProfileFragment;
 
 /**
  * Created by ranja_000 on 6/14/2017.

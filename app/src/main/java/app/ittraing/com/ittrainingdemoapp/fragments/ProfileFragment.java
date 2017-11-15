@@ -1,4 +1,4 @@
-package app.ittraing.com.ittrainingdemoapp.Fragments;
+package app.ittraing.com.ittrainingdemoapp.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

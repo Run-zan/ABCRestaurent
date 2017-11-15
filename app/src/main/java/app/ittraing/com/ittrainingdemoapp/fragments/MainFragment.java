@@ -1,4 +1,4 @@
-package app.ittraing.com.ittrainingdemoapp.Fragments;
+package app.ittraing.com.ittrainingdemoapp.fragments;
 
 import android.content.DialogInterface;
 import android.content.Intent;

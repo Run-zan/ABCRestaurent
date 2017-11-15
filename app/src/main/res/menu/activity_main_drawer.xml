@@ -24,13 +24,21 @@
         <menu>
             <item
                 android:id="@+id/nav_order_food"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@mipmap/ic_add_to_cart"
                 android:title="OrderFood" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Send" />
+
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_menu_share"
+                android:title="logout"/>
+
         </menu>
     </item>
+
+
 
 </menu>

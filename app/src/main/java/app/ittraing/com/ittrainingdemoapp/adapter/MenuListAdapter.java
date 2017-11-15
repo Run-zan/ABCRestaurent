@@ -1,4 +1,4 @@
-package app.ittraing.com.ittrainingdemoapp.Adapter;
+package app.ittraing.com.ittrainingdemoapp.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import app.ittraing.com.ittrainingdemoapp.POJO.MenuList;
+import app.ittraing.com.ittrainingdemoapp.pojo.MenuList;
 import app.ittraing.com.ittrainingdemoapp.R;
 
 /**

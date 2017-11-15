@@ -1,4 +1,4 @@
-package app.ittraing.com.ittrainingdemoapp.SplashScreen;
+package app.ittraing.com.ittrainingdemoapp.splashscreen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,8 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import app.ittraing.com.ittrainingdemoapp.Helper.Constants;
-import app.ittraing.com.ittrainingdemoapp.Helper.GlobalState;
+import app.ittraing.com.ittrainingdemoapp.helper.Constants;
+import app.ittraing.com.ittrainingdemoapp.helper.GlobalState;
 import app.ittraing.com.ittrainingdemoapp.LoginActivity;
 import app.ittraing.com.ittrainingdemoapp.MainActivity;
 import app.ittraing.com.ittrainingdemoapp.R;

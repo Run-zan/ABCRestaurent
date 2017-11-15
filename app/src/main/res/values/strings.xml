@@ -28,6 +28,7 @@
     <string name="food_quantity"> Quantity </string>
     <string name="order_time"> Time </string>
     <string name="order_date"> Date </string>
+    <string name="order_food">Order Food</string>
 
 
     <!--Array for Order Food spinner -->

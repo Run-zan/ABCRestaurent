@@ -1,4 +1,4 @@
-package app.ittraing.com.ittrainingdemoapp.POJO;
+package app.ittraing.com.ittrainingdemoapp.pojo;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class MenuList implements Serializable {
     String name, price, details, image, materials;
 
-    public MenuList(String name, String price, String details, String image, String materials) {
+    public  MenuList(String name, String price, String details, String image, String materials) {
         this.name = name;
         this.price = price;
         this.details = details;
